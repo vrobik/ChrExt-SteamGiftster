@@ -1,0 +1,141 @@
+<html>
+<head><title>Steamgiftster Options</title></head>
+<link rel="stylesheet" type="text/css" href="styles.css">
+<script src="jquery.js"></script>
+<script src="options.js"></script>
+<body>
+
+<h1>Steamgiftster Options</h1>
+
+<h3>Higher values are better for keeping steamgifts.com online!</h3>
+
+<table id="delays">
+	<tr>
+		<th>Settings</th>
+		<th>Min</th>
+		<th>Max</th>
+	</tr>
+	<tr>
+		<th class="spec">Seconds between scraping a page:</th>
+		<td>
+			<input type="number" id="page_seconds_min" class="timeinput">
+		</td>
+		<td>
+			<input type="number" id="page_seconds_max" class="timeinput">
+		</td>
+	</tr>
+	<tr>
+		<th class="specalt">Seconds between entering contests:</th>
+		<td class="alt">
+			<input type="number" id="contest_seconds_min" class="timeinput">
+		</td>
+		<td class="alt">
+			<input type="number" id="contest_seconds_max" class="timeinput">
+		</td>
+	</tr>
+	<tr>
+		<th class="spec">Seconds between reading forum post pages:</th>
+		<td>
+			<input type="number" id="forum_seconds_min" class="timeinput">
+		</td>
+		<td>
+			<input type="number" id="forum_seconds_max" class="timeinput">
+		</td>
+	</tr>
+	<tr>
+		<th class="specalt">Minutes between executions:</th>
+		<td class="alt">
+			<input type="number" id="exec_minutes_min" class="timeinput">
+		</td>
+		<td class="alt">
+			<input type="number" id="exec_minutes_max" class="timeinput">
+		</td>
+	</tr>
+	<tr>
+		<th class="spec">Sleep between:</th>
+		<td>
+			<input type="time" id="sleep_begin" class="timeinput">
+		</td>
+		<td>
+			<input type="time" id="sleep_end" class="timeinput">
+		</td>
+	</tr>
+	<tr>
+		<th class="specalt">Forum Post Age (hours):</th>
+		<td></td>
+		<td>
+			<input type="number" id="forum_post_age" class="timeinput">
+		</td>
+	</tr>
+</table>
+
+<hr>
+
+<h1>Game Priorities - Higher is Better</h1>
+
+<h3>If you don't have anything listed here, you probably haven't run Steamgiftster yet - click the icon.</h3>
+
+<div class="shadow">
+	<div class="games first">
+		<div class="tr">
+			<span class="th">Title</span>
+			<span class="td td-first">Priority</span>
+			<span class="td">Owned?</span>
+			<span class="td">Invalid DLC?</span>
+		</div>
+	</div>
+	<div class="games-list">
+		<div class="games" id="games"></div>
+	</div>
+</div><br/><hr/>
+
+<h1>Dev Tools</h1>
+
+<div class="tools table">
+	<div class="row">
+		<span class="cell half"><h3>Paste here your old list of games, from other installs</h3></span>
+		<span class="cell half"><h3>Paste here your existing list of games, from other installs</h3></span>
+	</div>
+	<div class="row">
+		<span class="cell half"><textarea id="priorities" rows="10"></textarea></span>
+		<span class="cell half"><textarea id="existing" rows="10"></textarea></span>
+	</div>
+</div>
+<div class="tools table">
+	<div class="row">
+		<span class="cell half"><h3>Paste here your old list of forum posts to skip, from other installs</h3></span>
+		<span class="cell half"><h3>Paste here your old list of dlcs, from other installs</h3></span>
+	</div>
+	<div class="row">
+		<span class="cell half"><textarea id="skip_posts" rows="8"></textarea></span>
+		<span class="cell half"><textarea id="dlcs" rows="8"></textarea></span>
+	</div>
+</div>
+
+<div class="tools table">
+	<div class="row">
+		<span class="cell sfert">used Chars: <span id="usedChars"></span></span>
+		<span class="cell sfert">used Percent: <span id="usedPercent"></span></span>
+		<span class="cell sfert">
+			<input type="button" value="Clear UrlStrings" class="clearurlstrings">
+			<input type="button" value="Clear DLC" class="cleardlc">
+		</span>
+		<span class="cell sfert">
+			<input type="button" value="Storage Up" class="storage_upload">
+			<input type="button" value="Storage Down" class="storage_download">
+			<!--<input type="button" value="Clear user_id" class="clear_id">-->
+		</span>
+	</div>
+	<div class="row">
+		<span class="cell sfert dev">DEV? <input type="checkbox" id="dev"/></span>
+	</div>
+</div>
+
+<div class="buttons table">
+	<div class="row">
+	</div>
+</div>
+<hr/>
+<br/>
+</body>
+</html>

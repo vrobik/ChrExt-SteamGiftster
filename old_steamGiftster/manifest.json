@@ -1,0 +1,28 @@
+{
+   "background": {
+      "scripts": [ "background.js" ]
+   },
+   "browser_action": {
+      "default_icon": "icon.png"
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "jquery.js", "steamgiftster.js" ],
+      "matches": [ "http://www.steamgifts.com/*", "https://www.steamgifts.com/*" ]
+   } ],
+   "content_security_policy": "script-src 'self' 'unsafe-eval' https://static.wepay.com https://ajax.googleapis.com https://www.wepay.com https://ssl.google-analytics.com; object-src 'self'",
+   "description": "Automatic entries in Steamgifts.com - never see (300P) again!",
+   "homepage_url": "https://www.wepay.com/donations/688372794",
+   "icons": {
+      "128": "icon128.png",
+      "16": "icon.png",
+      "48": "icon48.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCMEqkx0I9RYwBhC84JQPHZSKWtDw0NyzWaSn3DZR1NWPRUXCGQxdbunSZb1UqMxQrCQvkXKsqLECSgYp6Yqk+Ecd/PFjc6OSRGXSVpHUM5gIsc0h8QsaBm2RTnArX6upC2tES2v/TeHtxCKPY5oDxg1s66kVCAYSVACBGPcDhoCwIDAQAB",
+   "manifest_version": 2,
+   "name": "Steamgiftster",
+   "options_page": "options.html",
+   "permissions": [ "storage", "http://*.steamgifts.com/*", "tabs" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.20"
+}

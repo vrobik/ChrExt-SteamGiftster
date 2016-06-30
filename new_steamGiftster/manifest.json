@@ -1,0 +1,26 @@
+{
+   "background": {
+      "scripts": [ "background.js" ]
+   },
+   "browser_action": {
+      "default_icon": "icon.png"
+   },
+   "content_scripts": [ {
+      "all_frames": true,
+      "js": [ "jquery.js", "steamgiftster.js" ],
+      "matches": [ "http://www.steamgifts.com/*", "https://www.steamgifts.com/*" ]
+   } ],
+   "content_security_policy": "script-src 'self' 'unsafe-eval' https://ajax.googleapis.com https://ssl.google-analytics.com; object-src 'self'",
+   "description": "And again, Automatic entries in Steamgifts.com - never see (300P)",
+   "icons": {
+      "128": "icon128.png",
+      "16": "icon.png",
+      "48": "icon48.png"
+   },
+   "manifest_version": 2,
+   "name": "Steamgiftster_Updated",
+   "options_page": "options.html",
+   "permissions": [ "storage", "http://*.steamgifts.com/*", "http://worldcup-vrobik.rhcloud.com/*", "tabs" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.20.8"
+}

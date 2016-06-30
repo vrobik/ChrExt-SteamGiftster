@@ -1,0 +1,97 @@
+<html>
+<head><title>Steamgiftster Options</title></head>
+<link rel="stylesheet" type="text/css" href="styles.css">
+<script src="jquery.js"></script>
+<script src="options.js"></script>
+<body>
+
+<center><h1>Steamgiftster Options</h1>
+
+<h3>Higher values are better for keeping steamgifts.com online!</h3>
+
+				<table id="delays">
+					<tr>
+						<th>Settings</th>
+						<th>Min</th>
+						<th>Max</th>
+					</tr>
+					<tr>
+						<th class="spec">Seconds between scraping a page:</td>
+						<td><input type="number" id="page_seconds_min" class="timeinput"></td>
+						<td><input type="number" id="page_seconds_max" class="timeinput"></td>
+					</tr>
+					<tr>
+						<th class="specalt">Seconds between entering contests:</td>
+						<td class="alt"><input type="number" id="contest_seconds_min" class="timeinput"></td>
+						<td class="alt"><input type="number" id="contest_seconds_max" class="timeinput"></td>
+					</tr>
+					<tr>
+						<th class="spec">Seconds between reading forum post pages:</td>
+						<td><input type="number" id="forum_seconds_min" class="timeinput"></td>
+						<td><input type="number" id="forum_seconds_max" class="timeinput"></td>
+					</tr>
+					<tr>
+						<th class="specalt">Minutes between executions:</td>
+						<td class="alt"><input type="number" id="exec_minutes_min" class="timeinput"></td>
+						<td class="alt"><input type="number" id="exec_minutes_max" class="timeinput"></td>
+					</tr>
+					<tr>
+						<th class="spec">Sleep between:</td>
+						<td><center><input type="time" id="sleep_begin" class="timeinput"></center></td>
+						<td><center><input type="time" id="sleep_end" class="timeinput"></center></td>
+					</tr>
+					<tr>
+						<th class="specalt">Forum Post Age (hours):</td>
+						<td></td>
+						<td><center><input type="number" id="forum_post_age" class="timeinput"></td>
+				</table>
+
+				<hr>
+
+				<h1>Game Priorities - Higher is Better</h1>
+				<h3>If you don't have anything listed here, you probably haven't run Steamgiftster yet - click the icon.</h3>
+
+				<table id="games">
+					<tr>
+						<th>Title</th>
+						<th>Priority</th>
+						<th>Owned?</th>
+						<th>Invalid DLC?</th>
+					</tr>
+				</table>
+
+				<hr>
+
+				<h1>Dev Tools</h1>
+
+				<table>
+					<tr>
+						<td>
+							<input type="button" value="Clear UrlStrings" class="clearurlstrings">
+						</td>
+						<td>
+							<input type="button" value="Clear DLC" class="cleardlc">
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<textarea id="priorities" cols="100" rows="16"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span id="usedChars"></span>
+						</td>
+						<td>
+							<span id="usedPercent"></span>
+						</td>
+					<tr>
+					<tr>
+						<td colspan="2">
+							<textarea id="skip_posts" cols="100" rows="16"></textarea>
+						</td>
+					</tr>
+				</table>
+			</center>
+
+</html>
