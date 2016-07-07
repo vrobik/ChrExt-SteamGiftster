@@ -1,4 +1,4 @@
-var DEV = ( localStorage.dev === "true" ) ? true : false;
+var DEV = localStorage.dev === "true";
 var existing = null;
 var dlc = null;
 var priorities = null;
@@ -87,6 +87,8 @@ function load_games() {
 	$(".timeinput").change(function () {
 		UpdateTime($(this))
 	});
+	document.getElementsByClassName('storage_upload')[0].disabled = !$ch;
+	document.getElementsByClassName('storage_download')[0].disabled = !$ch;
 	var $priorities = $("#priorities");
 	var $existing = $("#existing");
 	var $dlcs = $("#dlcs");
@@ -108,7 +110,9 @@ function load_games() {
 		localStorage.dlc = $(this).val()
 	});
 	$dev.change(function () {
-		localStorage.dev = $(this).is(':checked');
+		let dev = $(this).is(':checked');
+		localStorage.dev = dev;
+		DevChange(dev);
 	});
 	$(".gameinput").change(function () {
 		var row = $(this).parent().parent();
@@ -255,4 +259,15 @@ function Log(t) {
 		DEV && console.log(t)
 	}
 }
+DevChange = (active) => {
+	let upload = document.getElementsByClassName('storage_upload')[0],
+		download = document.getElementsByClassName('storage_download')[0];
+	if( !active ){
+		upload.disabled = true;
+		download.disabled = true;
+	}else{
+		upload.disabled = false;
+		download.disabled = false;
+	}
+};
 document.addEventListener("DOMContentLoaded", load_games);

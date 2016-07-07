@@ -1,45 +1,47 @@
-var DEV = ( localStorage.dev === "true" ) ? true : false;
-var idsToActions = {};
-var contests = [];
-var page = 1;
-var tabIds = [];
-var existing = [];
-var dlc = [];
-var priorities = [];
-var urlStrings = [];
-var blackFont = new Image();
-var whiteFont = new Image();
-var actionQueue = [];
-var maxQueueSize = 0;
-	blackFont.src = "font_black.png";
-	whiteFont.src = "font_white.png";
-var refreshInterval = null;
-var wId = null;
-var iconCanvas = document.createElement("canvas");
-	iconCanvas.setAttribute("width", 19);
-	iconCanvas.setAttribute("height", 19);
-var iconContext = iconCanvas.getContext("2d");
-var iconImage = new Image();
-	iconImage.src = "icon.png";
-var iconCanvasWon = document.createElement("canvas");
-	iconCanvasWon.setAttribute("width", 19);
-	iconCanvasWon.setAttribute("height", 19);
-var iconContextWon = iconCanvasWon.getContext("2d");
-var iconImageWon = new Image();
-	iconImageWon.src = "gift.png";
-var running = false;
-var points = 0;
-var retryCount = 0;
-var tabUrls = {};
-var starfield = [];
-var starfieldCenter = {x: 9.5, y: 6};
-var nextThingToDo = null;
-var timeUntilNextThing = 0;
-var nextThingTimeout = null;
-var forumThreads = [];
-var forumPage = 1;
-var contestUrls = [];
-var postsPage = 1;
+var DEV = localStorage.dev === "true",
+	idsToActions = {},
+	contests = [],
+	page = 1,
+	tabIds = [],
+	existing = [],
+	dlc = [],
+	priorities = [],
+	urlStrings = [],
+	blackFont = new Image(),
+	whiteFont = new Image(),
+	actionQueue = [],
+	maxQueueSize = 0,
+	refreshInterval = null,
+	wId = null,
+	iconCanvas = document.createElement("canvas" ),
+	iconContext = iconCanvas.getContext("2d" ),
+	iconImage = new Image(),
+	iconCanvasWon = document.createElement("canvas" ),
+	iconContextWon = iconCanvasWon.getContext("2d" ),
+	iconImageWon = new Image(),
+	running = false,
+	points = 0,
+	retryCount = 0,
+	tabUrls = {},
+	starfield = [],
+	starfieldCenter = {x: 9.5, y: 6 },
+	nextThingToDo = null,
+	timeUntilNextThing = 0,
+	nextThingTimeout = null,
+	forumThreads = [],
+	forumPage = 1,
+	contestUrls = [],
+	postsPage = 1;
+
+blackFont.src = "font_black.png";
+whiteFont.src = "font_white.png";
+iconCanvas.setAttribute("width", 19);
+iconCanvas.setAttribute("height", 19);
+iconImage.src = "icon.png";
+iconCanvasWon.setAttribute("width", 19);
+iconCanvasWon.setAttribute("height", 19);
+iconImageWon.src = "gift.png";
+
 chrome.browserAction.onClicked.addListener(function () {
 	if (!running) {
 		iconContext.clearRect(0, 0, 19, 19);

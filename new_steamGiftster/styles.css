@@ -162,4 +162,19 @@ textarea {
   .dev input {
     vertical-align: middle; }
 
+.dev-tools {
+  border: 1px solid red;
+  padding: 10px;
+  width: calc(100% - 20px); }
+
+.alert {
+  background-color: #ffe553;
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
+  display: inline-block;
+  width: 100%;
+  border: 1px solid red;
+  margin-top: 20px; }
+
 /*# sourceMappingURL=styles.css.map */

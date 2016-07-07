@@ -1,4 +1,4 @@
-var DEV = ( localStorage.dev === "true" ) ? true : false;
+var DEV = localStorage.dev === "true";
 var lastRequest = null;
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 	Log(request);
@@ -60,11 +60,11 @@ function GetResults() {
 	return{type: "number_of_contests", first: n[0], last: n[1], total: n[2]}
 }
 function GetContests() {
-	var notContributor = $("div.giveaway__row-outer-wrap").not(":has(div.contributor_only)");
-	var groups = $("div.giveaway__row-outer-wrap").has("div.giveaway__column--group");
-	var contributorValid = $("div.giveaway__row-outer-wrap").has("div.giveaway__column--contributor-level.giveaway__column--contributor-level--positive");
-	var valid = $.merge(notContributor, contributorValid, groups);
-	return valid
+	let row_wrap = $("div.giveaway__row-outer-wrap");
+	var notContributor = row_wrap.not(":has(div.contributor_only)");
+	var groups = row_wrap.has("div.giveaway__column--group");
+	var contributorValid = row_wrap.has("div.giveaway__column--contributor-level.giveaway__column--contributor-level--positive");
+	return $.merge(notContributor, contributorValid, groups);
 }
 function OpenContest(contest) {
 	var contestUrl = contest.find("a").first().attr("href");
