@@ -15,17 +15,17 @@ function load_games() {
 	dlc = localStorage.dlc;
 	priorities = localStorage.priorities;
 	if (existing) {
-		existing = existing.split("<!$!>")
+		existing = existing.trim().split("<!$!>")
 	} else {
 		existing = []
 	}
 	if (dlc) {
-		dlc = dlc.split("<!$!>")
+		dlc = dlc.trim().split("<!$!>")
 	} else {
 		dlc = []
 	}
 	if (priorities) {
-		priorities = priorities.split("<!$!>")
+		priorities = priorities.trim().split("<!$!>")
 	} else {
 		priorities = []
 	}
@@ -34,6 +34,7 @@ function load_games() {
 	Log(priorities);
 	var games = [];
 	for (var i = 0; i < priorities.length; i += 2) {
+		if( priorities[i] === undefined || priorities[i + 1] === undefined ) continue;
 		var game = {title: priorities[i], priority: priorities[i + 1]};
 		game.existing = existing.indexOf(game.title) !== -1;
 		game.dlc = dlc.indexOf(game.title) !== -1;
@@ -82,7 +83,7 @@ function load_games() {
 	$("#sleep_begin").val(bullcrap("sleep_begin", "00:01"));
 	$("#sleep_end").val(bullcrap("sleep_end", "00:02"));
 	$("#forum_post_age").val(bullcrap("forum_post_age", 1));
-	$ch = ( bullcrap("dev", DEV) === "true" ) ? true : false;
+	$ch = bullcrap("dev", DEV) === "true";
 	$dev.prop('checked', $ch );
 	$(".timeinput").change(function () {
 		UpdateTime($(this))
@@ -93,9 +94,11 @@ function load_games() {
 	var $existing = $("#existing");
 	var $dlcs = $("#dlcs");
 	var $skipPosts = $("#skip_posts");
+	var $user_id = $("#user_id");
 	$priorities.val(localStorage.priorities);
 	$existing.val(localStorage.existing);
 	$dlcs.val(localStorage.dlc);
+	$user_id.val(localStorage.user_id);
 	$skipPosts.val(bullcrap("skip_posts", "http://www.steamgifts.com/forum/5vgHq/faq-site-guidelines-comment-formatting-user-add-ons"));
 	$skipPosts.change(function () {
 		localStorage.skip_posts = $(this).val()
@@ -152,10 +155,16 @@ function load_games() {
 	});
 
 	$(".clear_id").click(function () {
-		chrome.storage.sync.get('user_id',function(e){
-			DEV && console.log(e);
-		});
-		chrome.storage.sync.remove('user_id');
+		//chrome.storage.sync.get('user_id',function(e){
+		//	DEV && console.log(e);
+		//});
+		//chrome.storage.sync.remove('user_id');
+		localStorage.user_id = "";
+		location.reload()
+	});
+	$(".change_id").click(function () {
+		localStorage.user_id = $user_id.val();
+		location.reload()
 	});
 	$(".storage_download").click(function () {
 		loadChangesAjax();
@@ -171,6 +180,7 @@ function load_games() {
 			setTimeout( saveChangesAjax(),500);
 		});
 	});
+
 
 	$("#usedChars").text(GetLocalStorageUsed());
 	$("#usedPercent").text(100 * (GetLocalStorageUsed() / (2.5 * 1024 * 1024)));
@@ -210,6 +220,7 @@ function loadChangesAjax(){
 		localStorage.urlStrings = msg.urlstrings;
 		localStorage.priorities = msg.priorities;
 		localStorage.dlc = msg.dlc;
+		location.reload()
 	});
 
 	request.fail(function( jqXHR, textStatus ) {
